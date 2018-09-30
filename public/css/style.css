@@ -1,0 +1,158 @@
+/* css 的简单选择器:
+ 1 基于元素的类型如<p>,<li>,<h1>;
+ 2 基于class名称: <li class="first done">Create an HTML document</li>
+
+    The element with the class "first" is bolded
+  .first {
+    font-weight: bold;
+  }
+
+    All the elements with the class "done" are strike through
+  .done {
+  text-decoration: line-through;
+  }
+
+  注:class 可以使用空格包含多个名称
+
+  3 基于ID的选择器
+  <p id="rude"> — "Go away!"</p>
+
+  #rude {
+  font-family: monospace;
+  text-transform: uppercase;
+  }
+  4 全局样式
+
+  * {
+  padding: 5px;
+  border: 1px solid black;
+  background: rgba(255,0,0,0.25)
+  }
+
+*/
+
+/* 全局样式 */
+
+body {
+  width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+/* CSS伪类是添加到选择器末尾的关键字，前面是冒号(:)，
+用于指定要对选中的元素进行样式设置，但只在它处于特定状态时使用。
+例如，您可能希望只在链接元素被鼠标指针悬停时，或禁用或选中时的复选框，
+或DOM树中其父元素的第一个子元素时才对其进行样式设置。 */
+
+
+/* 实际操作情况时,style的更改,比如鼠标的旋停,变色等
+
+<a href="https://developer.mozilla.org/" target="_blank">Mozilla Developer Network</a>
+ These styles will style our link   in all states
+   a {
+    color: blue;
+    font-weight: bold;
+  }
+
+  We want visited links to be the same color      as non visited links
+  访问与非访问,颜色的区别
+  a:visited {
+    color: blue;
+  }
+
+   We highlight the link when it is     hovered (mouse), activated     or focused (keyboard)
+
+   a:hover,
+  a:active,
+  a:focus {
+    color: darkred;
+    text-decoration: none;
+  }
+*/
+
+/* 鼠标放在a上的变化 */
+
+a:hover {
+  border-bottom: 3px solid #4fc08d;
+}
+
+/*  css 中带点的表示类:
+    具体mdn解释:The class selector consists of a dot, '.', followed by a class name */
+.button {
+  background-color: #4fc08d;
+  color: #fff;
+}
+
+.avatar {
+  border-radius: 3px;
+  width: 48px;
+  height: 48px;
+  float: right;
+}
+
+/* 带id的选择器:The ID selector consists of a hash/pound symbol (#),
+ followed by the ID name of a given element. */
+ /* #polite {
+  font-family: cursive;
+} */
+
+ /* <p id="polite"> — "Good morning."</p> */
+/* css 的如何工作,影响着html,源自mdn */
+
+/* nav */
+
+.nav {
+  margin-bottom: 20px;
+  color: rgb(221, 19, 19);
+
+  text-align: center;
+}
+
+.nav h1 {
+  color: #dfa70e;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+/* ------------ nav-setting ------------- */
+
+.nav-setting{
+  position: fixed;
+  right: 30px;
+  top: 35px;
+  z-index: 999;
+}
+
+.nav-setting .ui.dropdown.button {
+  padding: 10px 10px 0 10px;
+  background-color: rgb(180, 20, 20) ;
+
+}
+
+.nav-setting .icon.bars {
+  color: rgb(245, 238, 235);
+  font-size: 38px;
+  padding: 5px;
+}
+
+/* -----------post-content---------- */
+
+.post-content h3 a {
+  color: #08f03a;
+}
+
+.post-content .tag {
+  font-size: 13px;
+  margin-right: 5px;
+  color: rgb(69, 10, 207);
+}
+
+.post-content .tag.right {
+  float: right;
+  margin-right: 0;
+}
+
+.post-content .tag.right a {
+  color: rgb(102, 6, 212);
+}
