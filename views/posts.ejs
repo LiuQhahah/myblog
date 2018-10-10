@@ -1,7 +1,8 @@
 <%- include('header')%>
-
+<!-- 对posts 进行for 循环，显示每一篇的post -->
 <% posts.forEach(function (post) { %>
 
+  <!-- include 属于ejs的范围 ，将post参数值传入文件'components/post-cpntent'' -->
   <%- include('components/post-content', { post: post}) %>
 <% })%>
 

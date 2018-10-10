@@ -1,4 +1,7 @@
 <div class="post-content">
+
+  <!-- post 内容分为两个部分，一个是作者信息，对应的名称，性别，以及简介，还有头像信息，
+  第二部分是博文内容以及浏览数，留言数 -->
   <div class="ui grid">
     <div class="four wide column">
       <a class="avatar avatar-link"
@@ -13,17 +16,22 @@
     <div class="eight wide column">
       <div class="ui segment">
         <h3>
+          <!-- 由于post在model中存在参数title，所以可以调用 -->
           <a href="/posts/<%= post._id%>"><%= post.title%></a>
         </h3>
+        <!-- 由于post在数据库创建时拥有content这个参数，所以可以直接调用，同时传参传的是post这个对象整体 -->
         <pre><%- post.content %></pre>
 
         <div>
+          <!--显示post创建的日期 & 浏览数 & 留言数-->
           <span class="tag"><%= post.created_at %></span>
           <span class="tag right">
             <span>浏览(<%=  post.pv || 0 %>)</span>
             <span>留言(<%=  post.commentsCount || 0 %>)</span>
 
+            <!-- 只有post 的作者才可以编辑与删除 -->
             <% if (user && post.author._id && user._id.toString() === post.author._id.toString() ) {%>
+
               <div class="ui inline dropdown">
                 <div class="text"></div>
                 <i class="dropdown icon"></i>

@@ -5,7 +5,7 @@ const checkLogin = require('../middlewares/check').checkLogin
 
 const CommentModel = require('../models/comments')
 
-// POST /comments 创建一条留言
+// POST /comments 创建一条留言 创建留言需要已经登录的标识
 router.post('/',checkLogin,function (req, res, next) {
   const author = req.session.user._id
   const postId = req.fields.postId

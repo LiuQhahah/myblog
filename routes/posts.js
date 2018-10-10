@@ -12,11 +12,22 @@ const checkLogin = require('../middlewares/check').checkLogin
 
 // 主页不需要登录，文章详情页也不需要登录
 // 发表文章，发表文章页，更新文章，删除文章均需要判断是否登录。
+
+
+//
 router.get('/', function (req,res,next) {
+
+  // 获取author
+  // 此属性是一个对象，包含路由中每个查询字符串参数的属性。 如果没有查询字符串，则它是空对象{}。
   const author = req.query.author
 
+  // 传入的参数是author
   PostModel.getPosts(author)
-    .then(function (posts) {
+    .then(function (posts) { //匿名函数
+
+      //console.log("获取posts: " + posts.toString());
+
+      // 把posts参数传入'posts.ejs'中
       res.render('posts',{
         posts:posts
       })

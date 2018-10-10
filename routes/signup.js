@@ -29,6 +29,7 @@ router.get('/', checkNotLogin, function (req, res, next) {
 // POST /signup 用户注册
 router.post('/', checkNotLogin, function (req, res, next){
   // 因为使用了处理表单及上传文件的中间件express-formidable,才会存在req.fields
+  // 只针对表单数据，有fields
   const name = req.fields.name
   const gender = req.fields.gender
   const bio = req.fields.bio

@@ -67,6 +67,9 @@ module.exports = {
       query.author = author
     }
 
+    console.log("wuery 作者： " + query);
+
+    // 将author在转化成query.author,在Post中返回数据
     return Post
       .find(query)
       .populate({ path: 'author', model: 'User'})
