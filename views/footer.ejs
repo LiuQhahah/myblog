@@ -1,7 +1,25 @@
 <script type="text/javascript">
+window.onload = function() {
+  const repassword = document.getElementById('repassword');
+  repassword.onpaste = function(e) {
+    e.preventDefault();
+  }
+}
+
+  // ready 函数：  指定DOM完全加载时要执行的函数。
+
   $(document).ready(function() {
+
+    //jquery 简介
+    // Get the <button> element with the class 'continue' and change its HTML to 'Next Step...'
+    // 获取按钮中class为continue的元素，将他的html值更改为'Next Step...'
+    //$( "button.continue" ).html( "Next Step..." )
     // 点击按钮弹出下拉框
-    $('.ui.dropdown').dropdown();
+
+    // 影响的还有注册signup.ejs时，对于性别的下拉
+
+    // post-content.ejs中编辑与删除的class 也是dropdown
+    $('.ui .dropdown').dropdown();
 
     // 鼠标悬浮在头像上，弹出气泡提示框
     $('.post-content .avatar-link').popup({
