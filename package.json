@@ -1,7 +1,7 @@
 {
-  "name": "myblog",
+  "name": "标题：myblog",
   "version": "1.0.0",
-  "description": "使用nodejs创建一个博客系统",
+  "description": "描述：使用nodejs创建一个博客系统",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
