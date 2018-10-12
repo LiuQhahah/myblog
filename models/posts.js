@@ -44,7 +44,8 @@ Post.plugin('addCommentsCount', {
 })
 
 module.exports = {
-  //创建一篇文章
+  //创建一篇文章 post为参数,posts.js中/ceate方法调用PostModel.create(post)
+
   create: function create (post) {
     return Post.create(post).exec()
   },
@@ -61,13 +62,13 @@ module.exports = {
   },
 
   // 按创建时间降序获取所有用户文章或者某个特定用户的所有文章
+  // author 为参数，调用时应getPosts('liua')
   getPosts: function getPosts (author) {
     const query = {}
     if(author) {
       query.author = author
     }
 
-    console.log("wuery 作者： " + query);
 
     // 将author在转化成query.author,在Post中返回数据
     return Post
