@@ -1,10 +1,7 @@
 <script type="text/javascript">
-window.onload = function() {
-  const repassword = document.getElementById('repassword');
-  repassword.onpaste = function(e) {
-    e.preventDefault();
-  }
-}
+
+
+
 
   // ready 函数：  指定DOM完全加载时要执行的函数。
 
@@ -22,7 +19,19 @@ window.onload = function() {
     $('.ui .dropdown').dropdown();
 
     // 鼠标悬浮在头像上，弹出气泡提示框
-    $('.post-content .avatar-link').popup({
+    // $('.post-content  .avatar-link').popup({
+    //   inline: true,
+    //   position: 'bottom right',
+    //   lastResort: 'bottom right'
+    // });
+
+    // $('.comment  .avatar-link').popup({
+    //   inline: true,
+    //   position: 'bottom right',
+    //   lastResort: 'bottom right'
+    // });
+
+     $('  .avatar-link').popup({
       inline: true,
       position: 'bottom right',
       lastResort: 'bottom right'
