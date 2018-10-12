@@ -45,4 +45,12 @@
 </div>
 
 
+<script type="text/javascript">
+window.onload = function() {
+  const repassword = document.getElementById('repassword');
+  repassword.onpaste = function(e) {
+    e.preventDefault();
+  }
+}
+</script>
 <%- include('footer')%>

@@ -74,13 +74,13 @@ body {
 /* 鼠标放在a上的变化 */
 
 a:hover {
-  border-bottom: 3px solid #4fc08d;
+  border-bottom: 3px solid #190aa5;
 }
 
 /*  css 中带点的表示类:
     具体mdn解释:The class selector consists of a dot, '.', followed by a class name */
 .button {
-  background-color: #4fc08d;
+  background-color: #c04fa8;
   color: #fff;
 }
 

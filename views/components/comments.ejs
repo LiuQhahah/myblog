@@ -8,9 +8,19 @@
         <!-- for循环显示留言 ， 创建时间以及留言内容，如果当前是作者在操作还有一个删除的功能-->
         <% comments.forEach(function (comment) { %>
           <div class="comment">
-            <span class="avatar">
-              <img src="/img/<%= comment.author.avatar %>">
-            </span>
+              <div class="four wide column">
+
+
+                <a class="avatar avatar-link"
+                href="/posts?author= <%= comment.author._id %>"
+                data-title="<%= comment.author.name %> | <%=({m:'男',f:'女',x:'保密'})[comment.author.gender] %>"
+                data-content="<%= comment.author.bio%>">
+                <img class="avatar" src="/img/<%= comment.author.avatar %>">
+              </a>
+              </div>
+
+              <!-- <img src="/img/<%= comment.author.avatar %>"> -->
+
 
             <div class="content">
               <a class="author" href="/posts?author=<%= comment.author._id %>"><%= comment.author.name%>
