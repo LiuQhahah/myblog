@@ -101,12 +101,14 @@ module.exports = {
     return Post.update({ _id: postId}, { $set: data}).exec()
   },
 
-  // 通过文章id 删除一篇文章
-  delPostById: function delPostById(postId, author) {
-    return Post.deleteOne({ author: author, _id: postId})
+  // 通过文章id 删除一篇文章 根据id删除文章
+  delPostById: function delPostById(postId) {
+    return Post.deleteOne({  _id: postId})
     .exec()
     .then(function (res) {
       //文章删除后，再删除该文章下的所有留言
+      console.log("评论数：" + CommentModel.getCommentsCount(postId).toString());
+
       if(res.result.ok && res.result.n >0) {
         return CommentModel.delCommentsByPostId(postId)
       }
