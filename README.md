@@ -184,7 +184,12 @@ req.flash('error',用户名不存在')`
 3. 数据库 Post 与 Comment
 
 
-在mongo中，创建Post，包含的参数 `作者`，`标题`，`内容`，`浏览数`
+在mongo中，创建Post，包含的参数 `作者`，`标题`，`内容`，`浏览数` 
+
+> 除了以上参数以外，Post还通过mongolass库创建了`created_at`参数，用来表示创建的日期。
+
+
+
 其中作者使用的id是mongolass.Types.ObejectId,内容，标题为string，浏览数为number
 
 
@@ -216,3 +221,26 @@ comments.ejs 显示的是所有的评论，所以就在commments中进行for循�
 对于当前页面的User的恩与评论的User还可以删除评论
 
 > 修改：对于鼠标浮动在`评论`作者时，显示作者信息的功能。
+
+### 文章的 更新，删除，
+
+1. 以下情况可以进行`删除`与`编辑`才会显示
+
+
+前端：
+
+
+
+用户名不为空即当前为登录状态& 文章的作者的id不为空 & 文章作者的id的string与当前用户的id相等
+
+编辑与删除的路径为`href="/posts/<%= post._id%>/edit"`,`"/posts/<%= post._id%>/remove"`
+
+
+
+
+后端：
+
+重新编辑先使用的是get('/:postId/edit')，获取文章的id，以及user的id。调用数据库中的函数，获取原生的文章即markdown格式的文件，然后重新加载`edit.ejs`，表单的方法为post，action的路径为`/posts/<%= post._id%>/edit`，来到`post('/:postId/edit')`，获取文章的id,作者的id,文章的标题，文章的内容。先获取原始文章，然后在调用方法`updatePostById`，将标题与内容作为参数传过去。如果成功通过提示栏告诉`编辑文章成功`，并重新加载。
+
+
+删除`get('/:postId/remove')`获取文章id与userid，首先获取原生的文章，调用model中的delete函数，成功后，通过通知栏显示 `删除文章成功`，加载返回到`/posts`。对于删除文章，不仅要删除文章内容，还有附带的留言，调用res.result.n的个数，循环删除评论内容。
