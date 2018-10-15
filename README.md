@@ -244,3 +244,93 @@ comments.ejs 显示的是所有的评论，所以就在commments中进行for循�
 
 
 删除`get('/:postId/remove')`获取文章id与userid，首先获取原生的文章，调用model中的delete函数，成功后，通过通知栏显示 `删除文章成功`，加载返回到`/posts`。对于删除文章，不仅要删除文章内容，还有附带的留言，调用res.result.n的个数，循环删除评论内容。
+
+
+### 数据库的使用：查询，执行，删除，添加，更改
+
+1. 数据库的连接
+在配置信息中 `defalut.js`，通过`module.exports`导出字符的方式设置mongodb的路径名。端口号以及数据库名称。   
+
+调用`mongolass`第三方库，通过`connect`方式，连接数据库。   
+
+
+2. 创建存储信息
+
+通过mongoladd的方法`model`方式创建，第一个变量是存储表，第二个变量是`schema`，规定设置存储信息的信息，并通过module.export导出字段信息。分别为`exports.User`，
+
+
+>  [exports 与module.export的区别](https://stackoverflow.com/questions/43397761/what-is-the-difference-between-module-export-and-export/43398667#43398667)。在javascript中有export而在node中只有exports
+
+
+总的来说，exports作用准备导出，但是真正整体导出的是module.exports
+
+[导出函数的两种方式] (https://stackoverflow.com/questions/31113498/what-is-the-best-practice-of-exports-function-in-nodejs)
+
+
+导入文件中的一个方法
+``` js
+
+require('../user.js').UserService
+```
+
+```javascript (user.js)
+
+module.exports.UserService = (function () {
+return {
+      getUser:getUser
+}
+})()
+```
+
+导入整个文件
+ ``` js
+ var CommentModel = require('../comment.js')
+
+
+ CommentModel.create(...)
+ ```
+
+ ``` js  comment.js
+ module.export = {
+   create: function create(comment) {
+     return ....
+   },
+
+   getCommentById: function getCommentById (commentId) {
+
+   }
+ }
+ 
+ ```
+ 3. 对表进行配置方案schema
+
+ 调用mongolass的model方法，设置schema User如下字段: name ,password,avatar, gender,bio。分别对应着用户民，密码，头像，性别，简介等，对应的数据类型为string，同时为必须填写（页面中有红星，意味着必须填写），对于性别提供枚举数据供选择，并设置默认值
+
+
+4. 数据库执行函数index，exec()
+未找到？？？
+
+
+5. plugin 附加的函数 ：contentToHtml   addCreatedAt
+
+1. 将markdown 转化为html 
+
+本论坛支持markdown格式的输入，并且可以将markdown转化为html,利用第三方库marked
+
+
+2. 添加创建的时间呐
+通过调用第三方库`objectid-to-timestamp`
+
+将id转化成时间戳!!!!!!!!!!!!!!!
+
+
+moment也是第三方库，根据Id将格式设定为('YYYY-MM-DD HH:mm')
+设定时间格式是根据moment这个库决定的
+
+3. 显示留言数据
+
+创建变量，commentsCount,计算同一id下的数目
+
+4. 显示浏览数据
+
+incPv,每一次GET 当前的postid即加1，使用updatde ，$inc加1
